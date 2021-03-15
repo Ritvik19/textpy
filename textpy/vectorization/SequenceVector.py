@@ -22,7 +22,7 @@ class SequenceVectorizer(BaseEstimator, TransformerMixin):
     def __init__(
         self,
         vocab_size,
-        max_seq_len=None
+        max_seq_len=None,
         oov_token="<unk>",
         char_level=False,
         padding="pre",

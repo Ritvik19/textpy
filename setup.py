@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="textpy",
-    version="1.0.1",
+    version="1.1.1",
     author="Ritvik Rastogi",
     author_email="rastogiritvik99@gmail.com",
     description="NLP made Easy",
