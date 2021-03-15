@@ -80,7 +80,7 @@ or
         sparse_tensors = cvt_to_tensors.fit_transform(sparse_vectors)
 
 
-* **Sequence Vectorizer**: Vectorize a text corpus, by turning each text into either a sequence of integers of a fixed length
+* **Sequence Vectorizer**: Vectorize a text corpus, by turning each text into either a sequence of integers of a fixed length (optional)
 
         vectorizer = vectorization.SequenceVectorizer(
             vocab_size=vocab_size, max_seq_len=seq_length

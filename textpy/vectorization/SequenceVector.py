@@ -4,7 +4,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 
 class SequenceVectorizer(BaseEstimator, TransformerMixin):
-    """Vectorize a text corpus, by turning each text into either a sequence of integers of a fixed length
+    """Vectorize a text corpus, by turning each text into either a sequence of integers of a fixed length (optional)
 
     Args:
         vocab_size (int): max number of unique words in the corpus
@@ -22,7 +22,7 @@ class SequenceVectorizer(BaseEstimator, TransformerMixin):
     def __init__(
         self,
         vocab_size,
-        max_seq_len,
+        max_seq_len=None
         oov_token="<unk>",
         char_level=False,
         padding="pre",
@@ -40,9 +40,11 @@ class SequenceVectorizer(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
-        return pad_sequences(
-            self.tokenizer.texts_to_sequences(X),
-            maxlen=self.max_seq_len,
-            padding=self.padding,
-            truncating=self.truncating,
-        )
+        if self.max_seq_len is not None:
+            return pad_sequences(
+                self.tokenizer.texts_to_sequences(X),
+                maxlen=self.max_seq_len,
+                padding=self.padding,
+                truncating=self.truncating,
+            )
+        return self.tokenizer.texts_to_sequences(X)
